@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Упорядоченный массив</title>
+</head>
+<body>
+    <h1>Упорядоченный массив</h1>
+    <h3>Создание упорядоченного массива</h3>
+    <label for="arraySize">Введите размер массива: </label>
+    <input type="number" id="arraySize" placeholder="Размер массива">
+    <button onclick="createOrderedArray()">Создать упорядоченный массив</button>
+
+    <div id="result"></div>
+
+    <h3>Операции с упорядоченным массивом</h3>
+    <label for="searchElement">Двоичный поиск элемента: </label>
+    <input type="number" id="searchElement" placeholder="Элемент для поиска">
+    <button onclick="searchElement()">Найти</button>
+
+    <label for="insertElement">Элемент для вставки: </label>
+    <input type="number" id="insertElement" placeholder="Элемент для вставки">
+    <button onclick="insertElement()">Вставить</button>
+
+    <label for="deleteElement">Элемент для удаления: </label>
+    <input type="number" id="deleteElement" placeholder="Элемент для удаления">
+    <button onclick="deleteElement()">Удалить</button>
+
+    <script>
+        let array = [];
+
+        function createOrderedArray() {
+        let size = document.getElementById('arraySize').value;
+        array = [];
+        for (let i = 0; i < size; i++) {
+            array.push(i + 1);
+        }
+        document.getElementById('result').innerText = `Создан упорядоченный массив: ${array}`;
+    }
+
+        function binarySearch(array, element) {
+            let left = 0;
+            let right = array.length - 1;
+            while (left <= right) {
+                let mid = Math.floor((left + right) / 2);
+                if (array[mid] === element) {
+                    return mid;
+                } else if (array[mid] < element) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+            return -1;
+        }
+
+        function searchElement() {
+        let element = Number(document.getElementById('searchElement').value);
+        let startTime = performance.now();
+        let index = binarySearch(array, element);
+        let endTime = performance.now();
+        if (index !== -1) {
+            alert(`Элемент ${element} найден по индексу ${index}. Время выполнения: ${endTime - startTime} мс`);
+        } else {
+            alert(`Элемент ${element} не найден. Время выполнения: ${endTime - startTime} мс`);
+        }
+    }
+
+        function insertElement() {
+            let element = Number(document.getElementById('insertElement').value);
+            let index = 0;
+            while (index < array.length && array[index] < element) {
+                index++;
+            }
+            array.splice(index, 0, element);
+            document.getElementById('result').innerText = `Массив после вставки: ${array}`;
+        }
+
+        function deleteElement() {
+            let element = Number(document.getElementById('deleteElement').value);
+            let index = binarySearch(array, element);
+            if (index !== -1) {
+                array.splice(index, 1);
+                document.getElementById('result').innerText = `Массив после удаления: ${array}`;
+            } else {
+                alert(`Элемент ${element} не найден в массиве`);
+            }
+        }
+    </script>
+</body>
+</html>

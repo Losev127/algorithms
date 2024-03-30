@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Операции с массивом</title>
+</head>
+<body>
+    <h1>Случайный массив</h1>
+    <h3>Создание массива случайных элементов</h3>
+    <label for="arraySize">Введите размер массива: </label>
+    <input type="number" id="arraySize" placeholder="Размер массива">
+    <button onclick="createRandomArray()">Создать массив случайных элементов</button>
+
+    <div id="result"></div>
+
+    <h3>Операции с массивом случайных элементов</h3>
+    <label for="searchElement">Поиск элемента: </label>
+    <input type="number" id="searchElement" placeholder="Элемент для поиска">
+    <button onclick="searchElement()">Найти</button>
+
+    <label for="insertIndex">Номер элемента для вставки: </label>
+    <input type="number" id="insertIndex" placeholder="Индекс для вставки">
+    <label for="insertElement">Элемент для вставки: </label>
+    <input type="number" id="insertElement" placeholder="Элемент для вставки">
+    <button onclick="insertElement()">Вставить</button>
+
+    <label for="deleteIndex">Номер элемента для удаления: </label>
+    <input type="number" id="deleteIndex" placeholder="Индекс для удаления">
+    <button onclick="deleteElement()">Удалить</button>
+
+<script>
+    let array = [];
+
+    function createRandomArray() {
+        let size = document.getElementById('arraySize').value;
+        array = [];
+        for (let i = 0; i < size; i++) {
+            array.push(Math.floor(Math.random() * 1000));
+        }
+        document.getElementById('result').innerText = `Создан случайный массив: ${array}`;
+    }
+
+    function searchElement() {
+        let element = Number(document.getElementById('searchElement').value);
+        let startTime = performance.now();
+        let index = array.indexOf(element);
+        let endTime = performance.now();
+        if (index !== -1) {
+            alert(`Элемент ${element} найден по индексу ${index}. Время выполнения: ${(endTime - startTime) * 10000} мс`);
+        } else {
+            alert(`Элемент ${element} не найден. Время выполнения: ${endTime - startTime} мс`);
+        }
+    }
+
+    function insertElement() {
+        let index = Number(document.getElementById('insertIndex').value);
+        let element = Number(document.getElementById('insertElement').value);
+        let startTime = performance.now();
+        array.splice(index, 0, element);
+        let endTime = performance.now();
+        document.getElementById('result').innerText = `Массив после вставки: ${array}. Время выполнения: ${endTime - startTime} мс`;
+    }
+
+    function deleteElement() {
+        let index = Number(document.getElementById('deleteIndex').value);
+        let startTime = performance.now();
+        array.splice(index, 1);
+        let endTime = performance.now();
+        document.getElementById('result').innerText = `Массив после удаления: ${array}. Время выполнения: ${endTime - startTime} мс`;
+    }
+</script>
+
+</body>
+</html>

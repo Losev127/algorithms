@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сортировка массива</title>
+</head>
+
+<body>
+    <h1>Сортировка массива</h1>
+    <h3>Создание массива</h3>
+    <label for="arraySize">Введите размер массива: </label>
+    <input type="number" id="arraySize" placeholder="Размер массива">
+    <button onclick="createRandomArray()">Создать массив</button>
+
+    <div id="result"></div>
+    <hr>
+    <h3>Сортировка массива</h3>
+    <button id="duplicateArrayBtn">Дублировать массив</button>
+    <label for="sortAlgorithm">Выбор алгоритма сортировки:</label>
+    <select id="sortAlgorithm">
+        <option value="insertionSort">Сортировка вставками</option>
+        <option value="selectionSort">Сортировка выбором</option>
+        <option value="mergeSort">Сортировка слиянием</option>
+        <option value="quickSort">Быстрая сортировка</option>
+    </select>
+    <button id="sortArrayBtn">Сортировать</button>
+    <hr>
+    <h3>Время выполнения операции (мс):</h3>
+    <div id="operationTime"></div>
+    <h3>Отсортированный массив:</h3>
+    <div id="resultsortedArray"></div>
+
+    <script>
+        let array = [];
+
+        function createRandomArray() {
+            let size = document.getElementById('arraySize').value;
+            array = [];
+            for (let i = 0; i < size; i++) {
+                array.push(Math.floor(Math.random() * 100));
+            }
+            document.getElementById('result').innerText = `Создан случайный массив: ${array}`;
+        }
+
+        document.getElementById('duplicateArrayBtn').addEventListener('click', function () {
+            duplicateArray = array.slice();
+            alert("Массив был успешно дублирован");
+        });
+
+        function insertionSort(arr) {
+            const arrayCopy = [...arr];
+            for (let i = 1; i < arr.length; i++) {
+                let current = arr[i];
+                let j = i - 1;
+                while (j >= 0 && arr[j] > current) {
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+                arr[j + 1] = current;
+            }
+            document.getElementById('resultsortedArray').innerText = `Результат сортировки вставками: ${arr}`;
+        }
+
+        function selectionSort(arr) {
+            const arrayCopy = [...arr];
+            const len = arr.length;
+            for (let i = 0; i < len - 1; i++) {
+                let minIndex = i;
+                for (let j = i + 1; j < len; j++) {
+                    if (arr[j] < arr[minIndex]) {
+                        minIndex = j;
+                    }
+                }
+                if (minIndex !== i) {
+                    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+                }
+            }
+            document.getElementById('resultsortedArray').innerText = `Результат сортировки выбором: ${arr}`;
+        }
+
+        function mergeSort(arr) {
+            const arrayCopy = [...arr];
+            if (arr.length <= 1) {
+                document.getElementById('resultsortedArray').innerText = `Результат сортировки слиянием: ${arr}`;
+                return arr;
+            }
+
+            const middle = Math.floor(arr.length / 2);
+            const left = arr.slice(0, middle);
+            const right = arr.slice(middle);
+
+            const result = merge(mergeSort(left), mergeSort(right));
+            document.getElementById('resultsortedArray').innerText = `Результат сортировки слиянием: ${result}`;
+            return result;
+        }
+
+        function merge(left, right) {
+            let result = [];
+            let leftIndex = 0;
+            let rightIndex = 0;
+
+            while (leftIndex < left.length && rightIndex < right.length) {
+                if (left[leftIndex] < right[rightIndex]) {
+                    result.push(left[leftIndex]);
+                    leftIndex++;
+                } else {
+                    result.push(right[rightIndex]);
+                    rightIndex++;
+                }
+            }
+
+            const resultArray = result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+            return resultArray;
+        }
+
+        function quickSort(arr, left = 0, right = arr.length - 1) {
+            const arrayCopy = [...arr];
+            if (arr.length > 1) {
+                let index = partition(arr, left, right);
+                if (left < index - 1) {
+                    quickSort(arr, left, index - 1);
+                }
+                if (index < right) {
+                    quickSort(arr, index, right);
+                }
+            }
+            document.getElementById('resultsortedArray').innerText = `Результат быстрой сортировки: ${arr}`;
+        }
+
+        function partition(arr, left, right) {
+            const pivot = arr[Math.floor((right + left) / 2)];
+            let i = left;
+            let j = right;
+            while (i <= j) {
+                while (arr[i] < pivot) {
+                    i++;
+                }
+                while (arr[j] > pivot) {
+                    j--;
+                }
+                if (i <= j) {
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                    i++;
+                    j--;
+                }
+            }
+            return i;
+        }
+
+        document.getElementById('sortArrayBtn').addEventListener('click', function () {
+            let sortAlgorithm = document.getElementById('sortAlgorithm').value;
+            let startTime, endTime;
+
+            let arrToSort = duplicateArray.slice();
+
+            switch (sortAlgorithm) {
+                case 'insertionSort':
+                    startTime = performance.now();
+                    insertionSort(arrToSort);
+                    endTime = performance.now();
+                    break;
+                case 'selectionSort':
+                    startTime = performance.now();
+                    selectionSort(arrToSort);
+                    endTime = performance.now();
+                    break;
+                case 'mergeSort':
+                    startTime = performance.now();
+                    mergeSort(arrToSort);
+                    endTime = performance.now();
+                    break;
+                case 'quickSort':
+                    startTime = performance.now();
+                    quickSort(arrToSort, 0, arrToSort.length - 1);
+                    endTime = performance.now();
+                    break;
+                default:
+                    alert('Неизвестный алгоритм сортировки');
+            }
+
+            let operationTime = endTime - startTime;
+            document.getElementById('operationTime').innerText = `Время выполнения операции (${sortAlgorithm}): ${operationTime} мс`;
+        });
+    </script>
+</body>
+
+</html>
