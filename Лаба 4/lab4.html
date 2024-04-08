@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Операции с массивом</title>
+</head>
+
+<body>
+    <h1>Случайный массив</h1>
+    <h3>Создание массива случайных элементов</h3>
+    <label for="arraySize">Введите размер массива: </label>
+    <input type="number" id="arraySize" placeholder="Размер массива">
+    <button onclick="createRandomArray()">Создать массив случайных элементов</button>
+
+    <div id="result"></div>
+
+    <h3>Операции с массивом случайных элементов</h3>
+    <label for="searchElementIndex">Поиск по индексу: </label>
+    <input type="number" id="searchElementIndex" placeholder="Индекс элемента">
+    <button onclick="searchElementByIndex()">Найти по индексу</button>
+
+    <label for="searchElementValue">Поиск по значению: </label>
+    <input type="number" id="searchElementValue" placeholder="Элемент для поиска">
+    <button onclick="searchElementByValue()">Найти по значению</button>
+
+
+    <label for="insertIndex">Номер элемента для вставки: </label>
+    <input type="number" id="insertIndex" placeholder="Индекс для вставки">
+    <label for="insertElement">Элемент для вставки: </label>
+    <input type="number" id="insertElement" placeholder="Элемент для вставки">
+    <button onclick="insertElement()">Вставить</button>
+
+    <label for="deleteIndex">Номер элемента для удаления: </label>
+    <input type="number" id="deleteIndex" placeholder="Индекс для удаления">
+    <button onclick="deleteElement()">Удалить</button>
+
+    <label for="swapElement1">Первый элемент для перестановки: </label>
+    <input type="number" id="swapElement1" placeholder="Первый элемент">
+    <label for="swapElement2">Второй элемент для перестановки: </label>
+    <input type="number" id="swapElement2" placeholder="Второй элемент">
+    <button onclick="swapElements()">Перестановка</button>
+
+    <div id="resultswap"></div>
+
+    <hr>
+
+    <h1>Связанный список</h1>
+    <input type="number" id="listSize" placeholder="Введите размер списка">
+    <button onclick="createLinkedList()">Создать связанный список</button>
+    <button onclick="insertionSortLinkedList()">Сортировать методом вставки</button>
+    <div id="LinkedList"></div>
+
+
+    <label for="insertIndex">Индекс для вставки: </label>
+    <input type="number" id="insertIndexLinkedList" placeholder="Индекс для вставки">
+    <label for="insertElement">Элемент для вставки: </label>
+    <input type="number" id="insertElementLinkedList" placeholder="Элемент для вставки">
+    <button onclick="insertLinkedListElement()">Вставить элемент</button>
+
+    <label for="deleteIndex">Индекс для удаления: </label>
+    <input type="number" id="deleteLinkedList" placeholder="Индекс для удаления">
+    <button onclick="deleteLinkedListElement()">Удалить элемент</button>
+
+    <label for="searchIndex">Поиск по индексу: </label>
+    <input type="number" id="searchIndexLinkedList" placeholder="Индекс элемента">
+    <button onclick="searchLinkedListElementByIndex()">Найти по индексу</button>
+
+    <label for="searchValue">Поиск по значению: </label>
+    <input type="number" id="searchValueLinkedList" placeholder="Элемент для поиска">
+    <button onclick="searchLinkedListElementByValue()">Найти по значению</button>
+
+    <label for="swapValue1">Первое значение для перестановки: </label>
+    <input type="number" id="swapValue1" placeholder="Первое значение">
+    <label for="swapValue2">Второе значение для перестановки: </label>
+    <input type="number" id="swapValue2" placeholder="Второе значение">
+    <button onclick="swapLinkedListElements()">Перестановка</button>
+
+    <button onclick="goToNextElement()">Следующий элемент</button>
+
+    <hr>
+
+    <h1>Двусвязный список</h1>
+    <input type="number" id="DoublylistSize" min="1" placeholder="Введите размер списка">
+    <button onclick="createDoublyLinkedList()">Создать двусвязный список</button>
+    <button onclick="insertionSortDoublyLinkedList()">Сортировать методом вставки</button>
+    <!-- Добавляем кнопку для сортировки -->
+    <div id="DoublyLinkedList"></div>
+
+
+    <label for="DoublyinsertIndex">Индекс для вставки: </label>
+    <input type="number" id="DoublyinsertIndex" placeholder="Индекс для вставки">
+    <label for="DoublyinsertElement">Элемент для вставки: </label>
+    <input type="number" id="DoublyinsertElement" placeholder="Элемент для вставки">
+    <button onclick="insertDoublyLinkedListElement()">Вставить элемент</button>
+
+    <label for="DoublydeleteIndex">Индекс для удаления: </label>
+    <input type="number" id="DoublydeleteIndex" placeholder="Индекс для удаления">
+    <button onclick="deleteDoublyLinkedListElement()">Удалить элемент</button>
+
+    <label for="DoublysearchIndex">Поиск по индексу: </label>
+    <input type="number" id="DoublysearchIndex" placeholder="Индекс элемента">
+    <button onclick="searchDoublyLinkedListElementByIndex()">Найти по индексу</button>
+
+    <label for="DoublysearchValue">Поиск по значению: </label>
+    <input type="number" id="DoublysearchValue" placeholder="Элемент для поиска">
+    <button onclick="searchDoublyLinkedListElementByValue()">Найти по значению</button>
+
+    <label for="DoublyswapValue1">Первое значение для перестановки: </label>
+    <input type="number" id="DoublyswapValue1" placeholder="Первое значение">
+    <label for="DoublyswapValue2">Второе значение для перестановки: </label>
+    <input type="number" id="DoublyswapValue2" placeholder="Второе значение">
+    <button onclick="swapDoublyLinkedListElements()">Перестановка</button>
+
+    <button onclick="goToNextDoublyElement()">Следующий элемент</button>
+    <button onclick="goToPreviousDoublyElement()">Предыдущий элемент</button>
+    <button onclick="goToLastDoublyElement()">Последний элемент</button>
+
+    <hr>
+
+    <h1>Двусторонний список</h1>
+    <input type="number" id="CircularlistSize" min="1" placeholder="Введите размер списка">
+    <button onclick="createCircularLinkedList()">Создать двусторонний список</button>
+    <button onclick="insertionSortCircularLinkedList()">Сортировать методом вставки</button>
+    <!-- Добавляем кнопку для сортировки -->
+    <div id="CircularLinkedList"></div>
+
+
+    <label for="CircularinsertIndex">Индекс для вставки: </label>
+    <input type="number" id="CircularinsertIndex" placeholder="Индекс для вставки">
+    <label for="CircularinsertElement">Элемент для вставки: </label>
+    <input type="number" id="CircularinsertElement" placeholder="Элемент для вставки">
+    <button onclick="insertCircularLinkedListElement()">Вставить элемент</button>
+
+    <label for="CirculardeleteIndex">Индекс для удаления: </label>
+    <input type="number" id="CirculardeleteIndex" placeholder="Индекс для удаления">
+    <button onclick="deleteCircularLinkedListElement()">Удалить элемент</button>
+
+    <label for="CircularsearchIndex">Поиск по индексу: </label>
+    <input type="number" id="CircularsearchIndex" placeholder="Индекс элемента">
+    <button onclick="searchCircularLinkedListElementByIndex()">Найти по индексу</button>
+
+    <label for="CircularsearchValue">Поиск по значению: </label>
+    <input type="number" id="CircularsearchValue" placeholder="Элемент для поиска">
+    <button onclick="searchCircularLinkedListElementByValue()">Найти по значению</button>
+
+    <label for="CircularswapValue1">Первое значение для перестановки: </label>
+    <input type="number" id="CircularswapValue1" placeholder="Первое значение">
+    <label for="CircularswapValue2">Второе значение для перестановки: </label>
+    <input type="number" id="CircularswapValue2" placeholder="Второе значение">
+    <button onclick="swapCircularLinkedListElements()">Перестановка</button>
+
+    <button onclick="goToNextCircularElement()">Следующий элемент</button>
+    <button onclick="goToLastCircularElement()">Последний элемент</button>
+
+
+
+
+    <script>
+        let array = [];
+        let linkedList = null;
+        let doublyLinkedList = null;
+        let circularLinkedList = null;
+
+        // Функции для работы с массивом
+        function createRandomArray() {
+            let size = document.getElementById('arraySize').value;
+            array = [];
+            for (let i = 0; i < size; i++) {
+                array.push(Math.floor(Math.random() * 1000));
+            }
+            document.getElementById('result').innerText = `Создан случайный массив: ${array}`;
+        }
+
+        function searchElementByIndex() {
+            let index = Number(document.getElementById('searchElementIndex').value);
+            let startTime = performance.now();
+            if (index >= 0 && index < array.length) {
+                let element = array[index];
+                let endTime = performance.now();
+                alert(`Элемент с индексом ${index} найден: ${element}. Время выполнения: ${(endTime - startTime) * 10000} мс`);
+            } else {
+                let endTime = performance.now();
+                alert(`Элемент по индексу ${index} не найден. Время выполнения: ${(endTime - startTime) * 10000} мс`);
+            }
+        }
+
+        function searchElementByValue() {
+            let element = Number(document.getElementById('searchElementValue').value);
+            let startTime = performance.now();
+            let index = array.indexOf(element);
+            let endTime = performance.now();
+            if (index !== -1) {
+                alert(`Элемент ${element} найден по индексу ${index}. Время выполнения: ${(endTime - startTime) * 10000} мс`);
+            } else {
+                alert(`Элемент ${element} не найден. Время выполнения: ${(endTime - startTime) * 10000} мс`);
+            }
+        }
+
+
+        function insertElement() {
+            let index = Number(document.getElementById('insertIndex').value);
+            let element = Number(document.getElementById('insertElement').value);
+            let startTime = performance.now();
+            array.splice(index, 0, element);
+            let endTime = performance.now();
+            document.getElementById('result').innerText = `Массив после вставки: ${array}. Время выполнения: ${endTime - startTime} мс`;
+        }
+        function deleteElement() {
+            let index = Number(document.getElementById('deleteIndex').value);
+            let startTime = performance.now();
+            array.splice(index, 1);
+            let endTime = performance.now();
+            document.getElementById('result').innerText = `Массив после удаления: ${array}. Время выполнения: ${endTime - startTime} мс`;
+        }
+
+        function swapElements() {
+            let element1 = Number(document.getElementById('swapElement1').value);
+            let element2 = Number(document.getElementById('swapElement2').value);
+            let index1 = array.indexOf(element1);
+            let index2 = array.indexOf(element2);
+            if (index1 !== -1 && index2 !== -1) {
+                let temp = array[index1];
+                array[index1] = array[index2];
+                array[index2] = temp;
+                document.getElementById('resultswap').innerText = `Массив после перестановки: ${array}`;
+            } else {
+                alert('Один или оба элемента не найдены в массиве');
+            }
+        }
+
+        // Создание связанного списка
+        class Node {
+            constructor(value) {
+                this.value = value;
+                this.next = null;
+            }
+        }
+
+        function createLinkedList() {
+            let size = document.getElementById('listSize').value;
+            linkedList = new Node(Math.floor(Math.random() * 1000));
+            let current = linkedList;
+            for (let i = 0; i < size - 1; i++) {
+                current.next = new Node(Math.floor(Math.random() * 1000));
+                current = current.next;
+            }
+            displayLinkedList(linkedList);
+        }
+
+        function swapLinkedListElements() {
+            let value1 = Number(document.getElementById('swapValue1').value);
+            let value2 = Number(document.getElementById('swapValue2').value);
+            let node1 = null;
+            let node2 = null;
+
+            let current = linkedList;
+            while (current) {
+                if (current.value === value1) {
+                    node1 = current;
+                }
+                if (current.value === value2) {
+                    node2 = current;
+                }
+                current = current.next;
+            }
+
+            if (node1 && node2) {
+                // Расчёт времени выполнения
+                let startTime = performance.now();
+
+                let temp = node1.value;
+                node1.value = node2.value;
+                node2.value = temp;
+                displayLinkedList(linkedList);
+
+                let endTime = performance.now();
+                let executionTime = endTime - startTime;
+                alert('Время выполнения: ' + executionTime + ' мс');
+            } else {
+                alert('Один или оба элемента не найдены в связанном списке');
+            }
+        }
+
+
+        function displayLinkedList(linkedList) {
+            let resultDiv = document.getElementById('LinkedList');
+            let resultHTML = '<p>Связанный список:</p><ul>';
+            let currentNode = linkedList;
+            while (currentNode) {
+                resultHTML += `<li>${currentNode.value}</li>`;
+                currentNode = currentNode.next;
+            }
+            resultHTML += '</ul>';
+            resultDiv.innerHTML = resultHTML;
+        }
+
+        function goToNextElement() {
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            // Переход к следующему элементу
+            if (linkedList && linkedList.next) {
+                linkedList = linkedList.next;
+                displayLinkedList(linkedList);
+            } else {
+                alert('Следующий элемент не найден');
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+
+        function insertLinkedListElement() {
+            let index = Number(document.getElementById('insertIndexLinkedList').value);
+            let element = Number(document.getElementById('insertElementLinkedList').value);
+            let newNode = new Node(element);
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            if (index === 0) {
+                newNode.next = linkedList;
+                linkedList = newNode;
+            } else {
+                let current = linkedList;
+                for (let i = 0; i < index - 1; i++) {
+                    if (current.next) {
+                        current = current.next;
+                    } else {
+                        alert('Индекс для вставки находится за пределами списка');
+                        return;
+                    }
+                }
+                newNode.next = current.next;
+                current.next = newNode;
+            }
+
+            displayLinkedList(linkedList);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+
+        function deleteLinkedListElement() {
+            let index = Number(document.getElementById('deleteLinkedList').value);
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            if (index === 0) {
+                if (linkedList) {
+                    linkedList = linkedList.next;
+                    displayLinkedList(linkedList);
+                } else {
+                    alert('Список пуст');
+                }
+            } else {
+                let current = linkedList;
+                for (let i = 0; i < index - 1; i++) {
+                    if (current && current.next) {
+                        current = current.next;
+                    } else {
+                        alert('Индекс для удаления находится за пределами списка');
+                        return;
+                    }
+                }
+                if (current.next) {
+                    current.next = current.next.next;
+                    displayLinkedList(linkedList);
+                } else {
+                    alert('Индекс для удаления находится за пределами списка');
+                }
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+
+        function searchLinkedListElementByIndex() {
+            let index = Number(document.getElementById('searchIndexLinkedList').value);
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            let current = linkedList;
+            for (let i = 0; i < index; i++) {
+                if (current && current.next) {
+                    current = current.next;
+                } else {
+                    alert('Индекс элемента не найден в списке');
+                    return;
+                }
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert(`Элемент с индексом ${index} найден: ${current.value}\nВремя выполнения: ${executionTime} мс`);
+        }
+
+
+        function searchLinkedListElementByValue() {
+            let value = Number(document.getElementById('searchValueLinkedList').value);
+            let current = linkedList;
+            let index = 0;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            while (current) {
+                if (current.value === value) {
+                    let endTime = performance.now();
+                    let executionTime = endTime - startTime;
+                    alert(`Элемент ${value} найден по индексу ${index}\nВремя выполнения: ${executionTime} мс`);
+                    return;
+                }
+                current = current.next;
+                index++;
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert(`Элемент ${value} не найден в списке\nВремя выполнения: ${executionTime} мс`);
+        }
+
+
+        function insertionSortLinkedList() {
+            let head = linkedList;
+            if (!head || !head.next) {
+                return linkedList;
+            }
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            let sorted = null;
+            let current = head;
+            while (current) {
+                let next = current.next;
+                sorted = insertNode(sorted, current);
+                current = next;
+            }
+            linkedList = sorted;
+            displayLinkedList(linkedList);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения сортировки: ' + executionTime + ' мс');
+        }
+
+        function insertNode(sorted, node) {
+            if (!sorted || node.value <= sorted.value) {
+                node.next = sorted;
+                return node;
+            }
+            let current = sorted;
+            while (current.next && node.value > current.next.value) {
+                current = current.next;
+            }
+            node.next = current.next;
+            current.next = node;
+            return sorted;
+        }
+
+
+
+        // Создание двусвязного списка
+        class DoublyNode {
+            constructor(value) {
+                this.value = value;
+                this.next = null;
+                this.prev = null;
+            }
+        }
+
+        function createDoublyLinkedList() {
+            const listSizeInput = document.getElementById('DoublylistSize');
+            const listSize = parseInt(listSizeInput.value);
+            if (listSize > 0) {
+                doublyLinkedList = new DoublyNode(Math.floor(Math.random() * 1000));
+                let current = doublyLinkedList;
+                for (let i = 0; i < listSize - 1; i++) {
+                    let newNode = new DoublyNode(Math.floor(Math.random() * 1000));
+                    newNode.prev = current;
+                    current.next = newNode;
+                    current = current.next;
+                }
+                displayDoublyLinkedList(doublyLinkedList);
+            } else {
+                alert('Пожалуйста, введите положительное число для размера списка');
+            }
+        }
+
+        function swapDoublyLinkedListElements() {
+            let value1 = Number(document.getElementById('DoublyswapValue1').value);
+            let value2 = Number(document.getElementById('DoublyswapValue2').value);
+            let node1 = null;
+            let node2 = null;
+
+            let current = doublyLinkedList;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            while (current) {
+                if (current.value === value1) {
+                    node1 = current;
+                }
+                if (current.value === value2) {
+                    node2 = current;
+                }
+                current = current.next;
+            }
+
+            if (node1 && node2) {
+                let temp = node1.value;
+                node1.value = node2.value;
+                node2.value = temp;
+                displayDoublyLinkedList(doublyLinkedList);
+            } else {
+                alert('Один или оба элемента не найдены в двусвязном списке');
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+
+        function displayDoublyLinkedList(linkedList) {
+            let resultDiv = document.getElementById('DoublyLinkedList');
+            let result = '';
+            let current = linkedList;
+            while (current !== null) {
+                result += current.value + ' ↔️ ';
+                current = current.next;
+            }
+            result += 'null'; // Не добавляем "null" вручную
+            resultDiv.textContent = result;
+        }
+
+
+
+        function goToNextDoublyElement() {
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            // Переход к следующему элементу
+            if (doublyLinkedList && doublyLinkedList.next) {
+                doublyLinkedList = doublyLinkedList.next;
+                displayDoublyLinkedList(doublyLinkedList);
+            } else {
+                alert('Следующий элемент не найден');
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function goToLastDoublyElement() {
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            // Переход к последнему элементу
+            let current = doublyLinkedList;
+            while (current.next) {
+                current = current.next;
+            }
+            doublyLinkedList = current;
+            displayDoublyLinkedList(doublyLinkedList);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function goToPreviousDoublyElement() {
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            // Переход к предыдущему элементу
+            if (doublyLinkedList && doublyLinkedList.prev) {
+                doublyLinkedList = doublyLinkedList.prev;
+                displayDoublyLinkedList(doublyLinkedList);
+            } else {
+                alert('Предыдущий элемент не найден');
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+
+        function insertDoublyLinkedListElement() {
+            let index = Number(document.getElementById('DoublyinsertIndex').value);
+            let element = Number(document.getElementById('DoublyinsertElement').value);
+            let newNode = new DoublyNode(element);
+            let current = doublyLinkedList;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            for (let i = 0; i < index - 1; i++) {
+                if (current && current.next) {
+                    current = current.next;
+                } else {
+                    alert('Индекс для вставки находится за пределами списка');
+                    return;
+                }
+            }
+            newNode.prev = current;
+            newNode.next = current.next;
+            if (current.next) {
+                current.next.prev = newNode;
+            }
+            current.next = newNode;
+            displayDoublyLinkedList(doublyLinkedList);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function deleteDoublyLinkedListElement() {
+            let index = Number(document.getElementById('DoublydeleteIndex').value);
+            let current = doublyLinkedList;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            for (let i = 0; i < index; i++) {
+                if (current && current.next) {
+                    current = current.next;
+                } else {
+                    alert('Индекс для удаления находится за пределами списка');
+                    return;
+                }
+            }
+            if (current.prev) {
+                current.prev.next = current.next;
+            } else {
+                doublyLinkedList = current.next;
+            }
+            if (current.next) {
+                current.next.prev = current.prev;
+            }
+            displayDoublyLinkedList(doublyLinkedList);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function searchDoublyLinkedListElementByIndex() {
+            let index = Number(document.getElementById('DoublysearchIndex').value);
+            let current = doublyLinkedList;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            for (let i = 0; i < index; i++) {
+                if (current && current.next) {
+                    current = current.next;
+                } else {
+                    alert('Индекс элемента не найден в списке');
+                    return;
+                }
+            }
+            alert('Элемент с индексом ' + index + ' найден: ' + current.value);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+
+        function searchDoublyLinkedListElementByValue() {
+            let value = Number(document.getElementById('DoublysearchValue').value);
+            let current = doublyLinkedList;
+            let index = 0;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            while (current) {
+                if (current.value === value) {
+                    alert('Элемент ' + value + ' найден по индексу ' + index);
+                    return;
+                }
+                current = current.next;
+                index++;
+            }
+            alert('Элемент ' + value + ' не найден в списке');
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function insertionSortDoublyLinkedList() {
+            let current = doublyLinkedList;
+            let sorted = null;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            while (current) {
+                let next = current.next;
+                sorted = sortedInsertDoubly(sorted, current);
+                current = next;
+            }
+            doublyLinkedList = sorted;
+            displayDoublyLinkedList(doublyLinkedList);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function sortedInsertDoubly(sorted, newNode) {
+            if (!sorted) {
+                return newNode;
+            } else if (newNode.value <= sorted.value) {
+                newNode.next = sorted;
+                sorted.prev = newNode;
+                return newNode;
+            } else {
+                let current = sorted;
+                while (current.next && newNode.value > current.next.value) {
+                    current = current.next;
+                }
+                newNode.next = current.next;
+                if (current.next) {
+                    current.next.prev = newNode;
+                }
+                current.next = newNode;
+                newNode.prev = current;
+                return sorted;
+            }
+        }
+
+
+        // Создание двустороннего списка
+        class CircularNode {
+            constructor(value) {
+                this.value = value;
+                this.next = null;
+                this.prev = null;
+            }
+        }
+
+        function createCircularLinkedList() {
+            const listSizeInput = document.getElementById('CircularlistSize');
+            const listSize = parseInt(listSizeInput.value);
+            if (listSize > 0) {
+                circularLinkedList = new CircularNode(Math.floor(Math.random() * 1000));
+                let current = circularLinkedList;
+                for (let i = 0; i < listSize - 1; i++) {
+                    let newNode = new CircularNode(Math.floor(Math.random() * 1000));
+                    current.next = newNode;
+                    newNode.prev = current;
+                    newNode.next = circularLinkedList; // Делаем список двусторонним
+                    circularLinkedList.prev = newNode; // Делаем список двусторонним
+                    current = current.next;
+                }
+                displayCircularLinkedList(circularLinkedList);
+            } else {
+                alert('Пожалуйста, введите положительное число для размера списка');
+            }
+        }
+
+        function swapCircularLinkedListElements() {
+            let value1 = Number(document.getElementById('CircularswapValue1').value);
+            let value2 = Number(document.getElementById('CircularswapValue2').value);
+            let node1 = null;
+            let node2 = null;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            let current = circularLinkedList;
+            do {
+                if (current.value === value1) {
+                    node1 = current;
+                }
+                if (current.value === value2) {
+                    node2 = current;
+                }
+                current = current.next;
+            } while (current !== circularLinkedList);
+
+            if (node1 && node2) {
+                let temp = node1.value;
+                node1.value = node2.value;
+                node2.value = temp;
+                displayCircularLinkedList(circularLinkedList);
+            } else {
+                alert('Один или оба элемента не найдены в двустороннем списке');
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+
+        function displayCircularLinkedList(linkedList) {
+            let resultDiv = document.getElementById('CircularLinkedList');
+            let result = '';
+            let current = linkedList;
+            do {
+                result += current.value + ' ↔️ ';
+                current = current.next;
+            } while (current !== linkedList);
+            resultDiv.textContent = result + '...'; // Добавляем многоточие для указания зацикленности списка
+        }
+
+        function goToNextCircularElement() {
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            // Переход к следующему элементу
+            if (circularLinkedList) {
+                circularLinkedList = circularLinkedList.next;
+                displayCircularLinkedList(circularLinkedList);
+            } else {
+                alert('Список не создан');
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function goToLastCircularElement() {
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            // Переход к последнему элементу
+            if (circularLinkedList) {
+                circularLinkedList = circularLinkedList.prev;
+                displayCircularLinkedList(circularLinkedList);
+            } else {
+                alert('Список не создан');
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function insertCircularLinkedListElement() {
+            let index = Number(document.getElementById('CircularinsertIndex').value);
+            let element = Number(document.getElementById('CircularinsertElement').value);
+            let newNode = new CircularNode(element);
+            let current = circularLinkedList;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            for (let i = 0; i < index - 1; i++) {
+                if (current && current.next && current.next !== circularLinkedList) {
+                    current = current.next;
+                } else {
+                    alert('Индекс для вставки находится за пределами списка');
+                    return;
+                }
+            }
+            newNode.next = current.next;
+            newNode.prev = current;
+            current.next.prev = newNode;
+            current.next = newNode;
+            displayCircularLinkedList(circularLinkedList);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function deleteCircularLinkedListElement() {
+            let index = Number(document.getElementById('CirculardeleteIndex').value);
+            let current = circularLinkedList;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            for (let i = 0; i < index - 1; i++) {
+                if (current && current.next && current.next !== circularLinkedList) {
+                    current = current.next;
+                } else {
+                    alert('Индекс для удаления находится за пределами списка');
+                    return;
+                }
+            }
+            current.next = current.next.next;
+            current.next.prev = current;
+            displayCircularLinkedList(circularLinkedList);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+
+        function searchCircularLinkedListElementByIndex() {
+            let index = Number(document.getElementById('CircularsearchIndex').value);
+            let current = circularLinkedList;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            for (let i = 0; i < index; i++) {
+                if (current && current.next && current.next !== circularLinkedList) {
+                    current = current.next;
+                } else {
+                    alert(`Элемент с индексом ${index} не найден в списке`);
+                    return;
+                }
+            }
+            alert(`Элемент с индексом ${index} найден: ${current.value}`);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function searchCircularLinkedListElementByValue() {
+            let value = Number(document.getElementById('CircularsearchValue').value);
+            let current = circularLinkedList;
+            let index = 1;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            do {
+                if (current.value === value) {
+                    alert(`Элемент ${value} найден по индексу ${index}`);
+                    return;
+                }
+                current = current.next;
+                index++;
+            } while (current !== circularLinkedList);
+            alert(`Элемент ${value} не найден в списке`);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function insertionSortCircularLinkedList() {
+            let sorted = null;
+            let current = circularLinkedList;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            do {
+                let next = current.next;
+                sorted = sortedInsertCircular(sorted, current);
+                current = next;
+            } while (current !== circularLinkedList);
+            circularLinkedList = sorted;
+            displayCircularLinkedList(circularLinkedList);
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+        function sortedInsertCircular(sorted, newNode) {
+            if (!sorted) {
+                newNode.next = newNode;
+                newNode.prev = newNode;
+                return newNode;
+            }
+            let current = sorted;
+
+            // Расчёт времени выполнения
+            let startTime = performance.now();
+
+            while (current.next !== sorted && newNode.value > current.next.value) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            newNode.prev = current;
+            current.next.prev = newNode;
+            current.next = newNode;
+            if (newNode.value <= sorted.value) {
+                return newNode;
+            } else {
+                return sorted;
+            }
+
+            let endTime = performance.now();
+            let executionTime = endTime - startTime;
+            alert('Время выполнения: ' + executionTime + ' мс');
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
